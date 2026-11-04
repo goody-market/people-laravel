@@ -77,6 +77,11 @@ final class PeopleServiceProvider extends ServiceProvider
     {
         $this->publishes([__DIR__.'/../config/people.php' => config_path('people.php')], 'people-config');
 
+        // The projection's tables. Loaded rather than published, so every
+        // application holding a copy of an identity holds the same shape of
+        // one and a change here reaches all of them.
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
         Auth::extend('people', function (Container $app): PeopleGuard {
             $guard = new PeopleGuard($app->make(AccessTokenVerifier::class), $app->make(Request::class));
 

@@ -36,9 +36,19 @@ return [
     'cache' => env('PEOPLE_CACHE_STORE'),
 
     // What `people:sync` hands each identity event to: a class implementing
-    // Oki\People\Laravel\Contracts\HandlesIdentityEvents.
+    // Oki\People\Laravel\Contracts\HandlesIdentityEvents. The package's own
+    // ProjectsIdentities keeps the identity_profiles projection, which is
+    // what most applications want.
     'events' => [
-        'handler' => null,
+        'handler' => Oki\People\Laravel\Identity\ProjectsIdentities::class,
+    ],
+
+    // Delivery, for an application that would rather be posted to than poll.
+    // The secret is what `webhook:register` printed at People; without one
+    // the receiver refuses every delivery, because it cannot tell one from a
+    // forgery.
+    'webhook' => [
+        'secret' => env('PEOPLE_WEBHOOK_SECRET'),
     ],
 
 ];

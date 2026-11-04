@@ -17,6 +17,10 @@ abstract class TestCase extends Orchestra
     protected function defineEnvironment($app): void
     {
         $app['config']->set('cache.default', 'array');
+
+        // The projection's tables need somewhere to be. In memory, so a
+        // suite leaves nothing behind.
+        $app['config']->set('database.default', 'testing');
         $app['config']->set('people.issuer', ISSUER);
         $app['config']->set('people.client_id', CLIENT);
         $app['config']->set('people.client_secret', 'client-secret');
