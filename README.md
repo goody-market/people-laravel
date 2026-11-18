@@ -16,7 +16,12 @@ PEOPLE_ISSUER=https://people.example.com
 PEOPLE_CLIENT_ID=your-client-id
 PEOPLE_CLIENT_SECRET=your-secret     # server-side applications only
 PEOPLE_AUDIENCE=api.example.com      # defaults to APP_URL's hostname
+PEOPLE_API_KEY=pk_…                  # what this service does as itself, not as somebody
 ```
+
+`PEOPLE_API_KEY` is the key People issued to this service. It reaches
+`app(People::class)->tickets()`, and nothing else: everything a person is behind goes
+through `->caller($theirAccessToken)`. Read the SDK's README for both.
 
 ## Protecting an API
 

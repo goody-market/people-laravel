@@ -25,6 +25,11 @@ return [
     // token naming another API, or none, is refused.
     'audience' => env('PEOPLE_AUDIENCE', parse_url((string) env('APP_URL'), PHP_URL_HOST)),
 
+    // The key People issued to this service, for what it does as itself
+    // rather than as somebody: minting an invitation ticket, and reading back
+    // who proved one. Never a person's access token.
+    'api_key' => env('PEOPLE_API_KEY'),
+
     // Seconds before a call to People is given up on.
     'timeout' => env('PEOPLE_TIMEOUT', 5),
 

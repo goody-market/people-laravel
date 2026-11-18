@@ -25,6 +25,7 @@ abstract class TestCase extends Orchestra
         $app['config']->set('people.client_id', CLIENT);
         $app['config']->set('people.client_secret', 'client-secret');
         $app['config']->set('people.audience', AUDIENCE);
+        $app['config']->set('people.api_key', API_KEY);
         $app['config']->set('auth.guards.people', ['driver' => 'people']);
     }
 }

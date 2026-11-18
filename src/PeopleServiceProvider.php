@@ -47,6 +47,7 @@ final class PeopleServiceProvider extends ServiceProvider
                     audience: self::text($config->get('people.audience')),
                     timeout: $timeout,
                     keysTtl: self::number($config->get('people.keys_ttl'), 900),
+                    apiKey: self::text($config->get('people.api_key')),
                 ),
                 new LaravelClient($app->make(Factory::class), $timeout),
                 $factory,
