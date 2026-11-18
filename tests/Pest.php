@@ -16,6 +16,7 @@ const ISSUER = 'https://people.example.com';
 const CLIENT = 'client-1';
 const AUDIENCE = 'api.example.com';
 const KID = 'key-1';
+const API_KEY = 'pk_service0000.key';
 
 /** @return array{private: non-empty-string, public: non-empty-string} */
 function keypair(): array

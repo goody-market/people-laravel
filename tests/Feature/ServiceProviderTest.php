@@ -12,6 +12,7 @@ it('builds People from the configuration', function () {
     expect($people->config->issuer)->toBe(ISSUER)
         ->and($people->config->clientId)->toBe(CLIENT)
         ->and($people->config->audience)->toBe(AUDIENCE)
+        ->and($people->config->apiKey)->toBe(API_KEY)
         ->and(app(People::class))->toBe($people);
 });
 
